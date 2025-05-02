@@ -1,10 +1,13 @@
 import './Navbar.css'
+import logoImage from '../../assets/images/logo.png'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
         <div className="nav-container">
-            <span className="logo">BibiBooking</span>
+            <a href='/' className="logo">
+                <img src={logoImage} alt="logo" />
+            </a>
 
             <div className="nav-items">
                 <button className="nav-button">Register</button>
