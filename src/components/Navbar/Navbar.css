@@ -1,13 +1,13 @@
 .navbar {
     height: 65px;
-    background-color: #16283d;
+    background-color: #003580;
     display: flex;
     justify-content: center;
 
     .nav-container {
         width: 100%;
         max-width: 85%;
-        color: #172739;
+        color: #003580;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -30,7 +30,7 @@
             outline: 0;
             padding: 8px 12px;
             cursor: pointer;
-            color: #16283d;
+            color: #003580;
             border-radius: 5px;
             font-weight: 500;
         }
