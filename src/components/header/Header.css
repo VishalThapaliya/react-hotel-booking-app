@@ -1,0 +1,129 @@
+.hero-section {
+    background-color: #003580;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .hero-container {
+        width: 100%;
+        max-width: 85%;
+        margin: 20px 0 100px 0;
+
+        .hero-list {
+            display: flex;
+            gap: 40px;
+            margin-block-end: 50px;
+
+            .hero-list-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                &.active {
+                    border:  1px solid #fff;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+            }
+
+            
+        }
+
+        .hero-title {
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .hero-text {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .hero-btn {
+            background-color: #0071c2;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 500;
+            border: none;
+            outline: 0;
+            padding: 10px;
+        }
+
+        .hero-search {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 30px;
+            width: 100%;
+            max-width: 85%;
+            background-color: #fff;
+            border: 3px solid #febb02;
+            padding: 30px 0;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -35px;
+
+            .hero-icon {
+                color: lightgray;
+            }
+
+            .hero-search-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .hero-search-input {
+                    padding: 10px;
+                    border: none;
+                    outline: none;
+                }
+
+                .hero-search-text {
+                    color: lightgray;
+                    cursor: pointer;
+                }
+
+                .date, 
+                .persons {
+                    position: absolute;
+                    top: 50px;
+                    border-radius: 10px;
+                    font-size: 14px;
+                    -webkit-box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.4);
+                    box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.4);
+                }
+
+                .persons {
+                    background-color: #fff;
+                    color: gray;
+                    
+
+                    .persons-item {
+                        width: 250px;
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 12px;
+
+                        .person-counter {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            color: #333;
+
+                            .person-counter-btn {
+                                width: 30px;
+                                height: 30px;
+                                border: 1px solid #0071c2;
+                                cursor: pointer;
+                                background-color: #fff;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+        }
+    }
+}
