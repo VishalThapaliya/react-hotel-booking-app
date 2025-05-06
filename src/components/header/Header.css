@@ -85,7 +85,7 @@
                 }
 
                 .date, 
-                .persons {
+                .options {
                     position: absolute;
                     top: 50px;
                     border-radius: 10px;
@@ -94,29 +94,34 @@
                     box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.4);
                 }
 
-                .persons {
+                .options {
                     background-color: #fff;
                     color: gray;
                     
 
-                    .persons-item {
+                    .option-item {
                         width: 250px;
                         display: flex;
                         justify-content: space-between;
+                        align-items: center;
                         padding: 12px;
 
-                        .person-counter {
+                        .option-counter {
                             display: flex;
                             align-items: center;
                             gap: 10px;
                             color: #333;
 
-                            .person-counter-btn {
+                            .option-counter-btn {
                                 width: 30px;
                                 height: 30px;
                                 border: 1px solid #0071c2;
                                 cursor: pointer;
                                 background-color: #fff;
+
+                                &:disabled {
+                                    cursor: not-allowed;
+                                }
                             }
                         }
                     }
