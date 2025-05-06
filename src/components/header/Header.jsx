@@ -3,7 +3,7 @@ import Navbar from '../navbar/Navbar'
 import './Header.css'
 import { faBed, faCableCar, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons'
 import { DateRange } from 'react-date-range'
-import { useEffect, useRef, useState } from 'react'
+import { Children, useEffect, useRef, useState } from 'react'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import { format } from 'date-fns'
@@ -11,7 +11,7 @@ import { format } from 'date-fns'
 
 // header list items
 const listItems = [
-    { id: 1, icon: faBed, text: 'Stays', active: true},
+    { id: 1, icon: faBed, text: 'Stays', active: true },
     { id: 2, icon: faPlane, text: 'Flights', active: false },
     { id: 3, icon: faCar, text: 'Car rentals', active: false },
     { id: 4, icon: faCableCar, text: 'Attractions', active: false },
@@ -21,50 +21,28 @@ const listItems = [
 const Header = () => {
     const [isDateOpen, setIsDateOpen] = useState(false);
     const [date, setDate] = useState([
-        { startDate: new Date(), endDate: new Date(), key: 'selection' }
-    ]);
-    const [showPersons, setShowPersons] = useState(false);
-    const personOptions = ['adult', 'children', 'room'];
-    const [personCounts, setPersonCounts] = useState({
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: 'selection'
+        }
+    ])
+
+    const [isOptionsOpen, setIsOptionsOpen] = useState(false);
+    const [options, setOptions] = useState({
         adult: 1,
         children: 0,
         room: 1
     });
-    const personsRef = useRef(null);
 
-    // Close the room selection div when clicking outside
-    useEffect(() => {
-        const handleClickOutSide = (event) => {
-            if(personsRef.current && !personsRef.current.contains(event.target)) {
-                setShowPersons(false);
+    const handleOption = (name, operation) => {
+        setOptions((prev) => {
+            return {
+                ...prev,
+                [name]: operation === 'increment' ? options[name] + 1 : options[name] - 1
             }
-        }
-
-        document.addEventListener('mousedown', handleClickOutSide);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutSide);
-        }
-    }, []);
-
-
-    const handleDateClick = () => {
-        setIsDateOpen(!isDateOpen);
+        })
     }
-
-    const handleIncrement = (type) => {
-        setPersonCounts(prev => ({
-            ...prev,
-            [type]: prev[type] + 1
-        }));
-    };
-
-    const handleDecrement = (type) => {
-        setPersonCounts(prev => ({
-            ...prev,
-            [type]: type === 'adult' || type === 'room' ? Math.max(1, prev[type] - 1) : Math.max(0, prev[type] - 1)
-        }));
-    };
 
     return (
         <header>
@@ -73,7 +51,7 @@ const Header = () => {
                 <div className="hero-container">
                     <div className="hero-list">
                         {listItems.map(item => (
-                            <div className={ item.active ? "hero-list-item active" : "hero-list-item"} key={item.id}>
+                            <div className={item.active ? "hero-list-item active" : "hero-list-item"} key={item.id}>
                                 <FontAwesomeIcon icon={item.icon} />
                                 <span>{item.text}</span>
                             </div>
@@ -90,40 +68,53 @@ const Header = () => {
                     <div className="hero-search">
                         <div className="hero-search-item">
                             <FontAwesomeIcon icon={faBed} className='hero-icon' />
-                            <input type="text" placeholder='Where are you going?' className='hero-search-input'/>
+                            <input type="text" placeholder='Where are you going?' className='hero-search-input' />
                         </div>
 
-                        <div className="hero-search-item" onClick={handleDateClick}>
+                        <div className="hero-search-item">
                             <FontAwesomeIcon icon={faCalendarDays} className='hero-icon' />
-                            <span className="hero-search-text">{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-                            { isDateOpen && <DateRange 
+                            <span onClick={() => { setIsDateOpen(!isDateOpen); setIsOptionsOpen(false) }} className="hero-search-text">{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                            {isDateOpen && <DateRange
                                 editableDateInputs={true}
-                                onChange={item => setDate([item.selection])}
                                 moveRangeOnFirstSelection={false}
                                 ranges={date}
+                                onChange={item => setDate([item.selection])}
                                 className='date'
                             />}
                         </div>
 
-                        <div className="hero-search-item" onClick={() => setShowPersons(!showPersons)}>
+                        <div className="hero-search-item">
                             <FontAwesomeIcon icon={faPerson} className='hero-icon' />
-                            <span className="hero-search-text">{ `${personCounts.adult} Adult - ${personCounts.children} Children - ${personCounts.room} Room` }</span>
-                            
-                            { showPersons && 
-                                <div className="persons" ref={personsRef}>
-                                    {personOptions.map((type) => (
-                                        <div className="persons-item" key={type}>
-                                            <span className="persons-text">{type.charAt(0).toUpperCase() + type.slice(1)}</span>
-                                            <div className="person-counter">
-                                                <button className="person-counter-btn" onClick={() => handleDecrement(type)}>-</button>
-                                                <span className="person-counter-number">{personCounts[type]}</span>
-                                                <button className="person-counter-btn" onClick={() => handleIncrement(type)}>+</button>
-                                            </div>
-                                        </div>
-                                    ))}
-                                    <button className="close-btn" onClick={() => setShowPersons(false)}>Close</button>
+                            <span onClick={() => { setIsOptionsOpen(!isOptionsOpen); setIsDateOpen(false) }} className="hero-search-text">{`${options.adult} - Adult | ${options.children} - Children | ${options.room} - Room `}</span>
+
+                            {isOptionsOpen && <div className="options">
+                                <div className="option-item">
+                                    <div className="option-text">Adult</div>
+                                    <div className="option-counter">
+                                        <button disabled={options.adult <= 1} className="option-counter-btn" onClick={() => handleOption('adult', 'decrement')}>-</button>
+                                        <span className="option-counter-number">{options.adult}</span>
+                                        <button className="option-counter-btn" onClick={() => handleOption('adult', 'increment')}>+</button>
+                                    </div>
                                 </div>
-                            }
+
+                                <div className="option-item">
+                                    <div className="option-text">Children</div>
+                                    <div className="option-counter">
+                                        <button disabled={options.children <= 0} className="option-counter-btn" onClick={() => handleOption('children', 'decrement')}>-</button>
+                                        <span className="option-counter-number">{options.children}</span>
+                                        <button className="option-counter-btn" onClick={() => handleOption('children', 'increment')}>+</button>
+                                    </div>
+                                </div>
+
+                                <div className="option-item">
+                                    <div className="option-text">Room</div>
+                                    <div className="option-counter">
+                                        <button disabled={options.room <= 1} className="option-counter-btn" onClick={() => handleOption('room', 'decrement')}>-</button>
+                                        <span className="option-counter-number">{options.room}</span>
+                                        <button className="option-counter-btn" onClick={() => handleOption('room', 'increment')}>+</button>
+                                    </div>
+                                </div>
+                            </div>}
                         </div>
 
                         <div className="hero-search-item">
