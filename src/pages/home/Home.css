@@ -1,0 +1,15 @@
+.main-container {
+    padding-block-start: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .home-title {
+        width: 100%;
+        max-width: 85%;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
