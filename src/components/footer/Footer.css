@@ -1,0 +1,43 @@
+footer {
+  width: 100%;
+  max-width: 85%;
+  font-size: 14px;
+
+  .footer-lists {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 50px;
+
+    .footer-category {
+      padding-inline-start: 10px;
+
+      h4 {
+        font-weight: 500;
+        margin-block-end: 10px;
+      }
+
+      .list {
+        list-style: none;
+        padding: 0;
+
+        .list-item {
+          margin-bottom: 10px;
+          color: #003580;
+          cursor: pointer;
+
+          p {
+            font-weight: 300;
+            color: #464343;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-text {
+    text-align: center;
+    color: #464343;
+    font-size: 12px;
+  }
+}
