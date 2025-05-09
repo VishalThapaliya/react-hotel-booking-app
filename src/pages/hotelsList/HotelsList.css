@@ -1,0 +1,89 @@
+.list-container {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 20px;
+
+    .list-wrapper {
+        width: 100%;
+        max-width: 85%;
+        display: flex;
+        gap: 20px;
+        
+        .list-search {
+            flex: 1;
+            background-color: #febb02;
+            padding: 10px;
+            border-radius: 10px;
+            position: sticky;
+            height: max-content;
+
+            .list-title {
+                font-size: 20px;
+                color: #555;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
+            .list-item {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 10px;
+
+                label {
+                    font-size: 12px;
+                }
+
+                input {
+                    height: 30px;
+                    border: none;
+                    outline: 0;
+                    padding: 5px;
+                }
+
+                > span {
+                    height: 30px;
+                    padding: 5px;
+                    display: flex;
+                    align-items: center;
+                    background-color: #fff;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .list-options {
+                    padding: 10px;
+
+                    .list-search-option-item {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+                        color: #555;
+                        font-size: 12px;
+
+                        .list-search-option--input {
+                            width: 50px;
+                        }
+                    }
+                }
+
+                
+            }
+
+            button {
+                padding: 10px;
+                background-color: #0071c2;
+                color: #fff;
+                width: 100%;
+                font-weight: 500;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+
+        .list-result {
+            flex: 3;
+        }
+    }
+}
