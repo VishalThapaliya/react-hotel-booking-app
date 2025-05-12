@@ -114,3 +114,44 @@
         
     }
 }
+
+.slider {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 999;
+
+    .slider-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        .slider-image {
+            width: 75%;
+            height: 80vh;
+        }
+    }
+
+    .slider-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        color: lightgray;
+        cursor: pointer;
+    }
+
+    .slider-arrow-btn {
+        margin: 20px;
+        font-size: 50px;
+        color: lightgray;
+        cursor: pointer;
+    }
+}
