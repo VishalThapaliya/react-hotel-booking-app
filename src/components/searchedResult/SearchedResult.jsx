@@ -1,6 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import './SearchedResult.css'
 
-const SearchedResult = () => {
+const SearchedResult = ({ id, name, location, distance, featureTitle, features, price, rating, ranking, description }) => {
+  const navigate = useNavigate();
+
+  const handleSeeAvailability = () => {
+    navigate(`/hotels/${id}`, {
+      state: {
+        id,
+        title: name,
+        address: location,
+        distance,
+        featureTitle,
+        features,
+        price,
+        rating,
+        ranking,
+        description
+      }
+    });
+  };
+
   return (
     <section className="search-result">
       <img 
@@ -10,28 +30,29 @@ const SearchedResult = () => {
       />
 
       <div className="search-result--description">
-        <h2 className="search-result--title">Lavie Maison Central AC Hot Tub</h2>
-        <span className="search-result--distance">500m from center</span>
+        <h2 className="search-result--title">{ name }</h2>
+        <span className="search-result--distance">{location}</span>
+        <span className="search-result--distance">{distance}</span>
         <span className="search-result--taxi">Free airport taxi</span>
-        <span className="search-result--subtitle">Apartment with 3 deluxe rooms</span>
-        <span className="search-result--features">4 Beds (3 beds + 1 sofa-bed) - 1 living room - 2 bathrooms</span>
+        <span className="search-result--subtitle">{featureTitle}</span>
+        <span className="search-result--features">{ features }</span>
         <span className="search-result--cancel-option">Free cancellation</span>
         <span className="search-result--cancel-option-subtitle">You can cancel later, so lock in this great price today.</span>
       </div>
       <div className="search-result--details">
         <div className="search-result--details-rating">
-          <span>Excellent</span>
-          <button>8.9</button>
+          <span>{ranking}</span>
+          <button>{rating.toFixed(1)}</button>
         </div>
 
         <div className="search-result--details-texts">
-          <span className="search-result--details-price">&euro; 123</span>
+          <span className="search-result--details-price">&euro; {price}</span>
           <span className="search-result--details-tax-option">Includes taxes and fees</span>
-          <button className="search-result--details-check-btn">See availability</button>
+          <button className="search-result--details-check-btn" onClick={handleSeeAvailability}>See availability</button>
         </div>
       </div>
     </section>
   )
 }
 
-export default SearchedResult
+export default SearchedResult;

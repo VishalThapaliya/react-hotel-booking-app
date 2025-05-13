@@ -8,13 +8,15 @@
         max-width: 85%;
         display: flex;
         gap: 20px;
-        
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+
         .list-search {
-            flex: 1;
+            flex: 1 1 300px;
             background-color: #febb02;
             padding: 10px;
             border-radius: 10px;
             position: sticky;
+            top: 10px;
             height: max-content;
 
             .list-title {
@@ -63,11 +65,10 @@
 
                         .list-search-option--input {
                             width: 50px;
+                            padding: 3px;
                         }
                     }
                 }
-
-                
             }
 
             button {
@@ -79,11 +80,75 @@
                 border: none;
                 outline: none;
                 cursor: pointer;
+                border-radius: 5px;
             }
         }
 
         .list-result {
-            flex: 3;
+            flex: 3 1 600px;
+        }
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .list-container {
+        .list-wrapper {
+            flex-direction: column;
+
+            .list-search {
+                position: static;
+                width: 100%;
+            }
+
+            .list-result {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .list-container {
+        .list-wrapper {
+            gap: 15px;
+
+            .list-search {
+                padding: 8px;
+
+                .list-title {
+                    font-size: 18px;
+                }
+
+                .list-item {
+                    label {
+                        font-size: 11px;
+                    }
+
+                    input, > span {
+                        font-size: 13px;
+                    }
+
+                    .list-options {
+                        .list-search-option-item {
+                            font-size: 11px;
+
+                            .list-search-option--input {
+                                width: 40px;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    padding: 8px;
+                    font-size: 14px;
+                }
+            }
+
+            .list-result {
+                flex: 1 1 auto;
+            }
         }
     }
 }
