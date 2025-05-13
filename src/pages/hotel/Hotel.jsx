@@ -1,54 +1,42 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Header from '../../components/header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import MailList from '../../components/mailList/MailList';
 import Footer from '../../components/footer/Footer';
-
 import './Hotel.css';
-
-// Dummy hotel data by ID (for now, static, can be fetched dynamically later)
-const hotelData = {
-  '1': {
-    title: 'Lavie Maison Central AC Hot Tub',
-    address: '123 Boulvard Bergers, 750011 Paris',
-    distance: '500m from center',
-    priceHighlight: 'Book a stay over € 250 at this property and get a free airport taxi',
-    price: 1250,
-    description: `Located in a central area of ​​Paris, Lavie Maison Central AC Hot Tub offers a hot tub. 
-    Free WiFi is available throughout the property and the property is 800 meters from the Pompidou Center. 
-    This air-conditioned apartment consists of 3 bedrooms, a living room, a fully equipped kitchen with a fridge and a coffee machine, and 2 bathrooms with a bidet and a shower. 
-    Towels and bed linen are available. Speaking English and French, staff at the 24-hour front desk can help you plan your stay. Lavie Maison Central AC Hot Tub offers a hot tub. 
-    Popular points of interest near the accommodation include Notre Dame Cathedral, Opéra Bastille, and Sainte-Chapelle. 
-    The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.`
-  },
-  '2': {
-    title: 'Hotel Radisson',
-    address: '4 Rue Gustave Eiffel, 750004 Paris',
-    distance: '50m from center',
-    priceHighlight: 'Book a stay over € 350 at this property and get a free airport taxi',
-    price: 1250,
-    description: `Located in a central area of ​​Paris, Radisson Hotel offers a world class services. 
-    Free WiFi is available throughout the property and the property is 800 meters from the Pompidou Center. 
-    This air-conditioned apartment consists of 3 bedrooms, a living room, a fully equipped kitchen with a fridge and a coffee machine, and 2 bathrooms with a bidet and a shower. 
-    Towels and bed linen are available. Speaking English and French, staff at the 24-hour front desk can help you plan your stay. Lavie Maison Central AC Hot Tub offers a hot tub. 
-    Popular points of interest near the accommodation include Notre Dame Cathedral, Opéra Bastille, and Sainte-Chapelle. 
-    The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.`
-  }
-  // Could add more hotel objects for other IDs
-};
 
 const hotelImages = [
   { id: 1, src: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/678617811.jpg?k=e91a5dfe5ed316ea72ea7a0a617132f554b66ee201bde096fee861add5bb3e51&o=' },
   { id: 2, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/678618106.jpg?k=4915ec02da5345d46c01872d2db836eb5b25f65d03e59233fbabd7c106b2704b&o=&hp=1' },
   { id: 3, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/678618046.jpg?k=62c1b1600750662b16802f12db2350c5dcd3c6585784a8f5003d7e05b14769b8&o=&hp=1' },
   { id: 4, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/678618181.jpg?k=5bdd53e116b85d7408d5aa9dd81fd6340789d6a12d8f4ffe151a2c74f5a0faaa&o=&hp=1' },
+  { id: 5, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/414996972.jpg?k=16ddaec9a6068a34ca1c813b331d2976bbcebd90a00aa7876618e8920b9e4587&o=&hp=1' },
+  { id: 6, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/497846984.jpg?k=9b6d5b2be21fe59e5014c18df23fb99fdc9bf929ec48171f80b50130452fbb74&o=&hp=1' },
+  { id: 7, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/408743583.jpg?k=a93be7a590870b92fc77f3ea3a2adae09ef457f00d5b5c297c6207f68894bd2f&o=&hp=1' },
+  { id: 8, src: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/337436220.jpg?k=0844564d17eccac3b1673bc188bbfbe2873564ce6a2c9b7171c1ecf71748df40&o=&hp=1' },
 ];
 
 const Hotel = () => {
   const { id } = useParams();
-  const hotel = hotelData[id] || hotelData['1']; // fallback to '1' if id not found (you can handle 404 instead)
+  const { state: hotel } = useLocation();
+
+  // fallback dummy data if user directly visits URL (no state passed)
+  const fallbackHotel = {
+    title: 'Default Hotel Title',
+    adress: 'Unknown Address',
+    distance: 'Unknown Distance',
+    priceHighlight: 'Book a stay and get a free airport taxi',
+    price: 0,
+    description: `Default hotel description.`,
+  }
+
+  // const hotel = location.state || fallbackHotel;
+
+  if(!hotel) {
+    return <p>Hotel details not found!</p>
+  }
 
   const [slideImageIndex, setSlideImageIndex] = useState(0);
   const [openSlider, setOpenSlider] = useState(false);
@@ -95,7 +83,7 @@ const Hotel = () => {
           </div>
 
           <span className="hotel-distance">{hotel.distance}</span>
-          <span className="hotel-price-highlight">{hotel.priceHighlight}</span>
+          <span className="hotel-price-highlight">Book a stay over € {hotel.price} at this property and get a free airport taxi</span>
 
           <div className="hotel-images">
             {hotelImages.map((image, index) => (
@@ -107,7 +95,7 @@ const Hotel = () => {
 
           <div className="hotel-details">
             <div className="hotel-details--text">
-              <h2 className="hotel-details--title">Stay in the heart of Paris</h2>
+              <h2 className="hotel-details--title">Stay in the heart of {hotel.address}</h2>
               <p className="hotel-details--description">{hotel.description}</p>
             </div>
 
