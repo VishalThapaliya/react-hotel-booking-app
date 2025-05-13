@@ -1,21 +1,19 @@
-import './Navbar.css'
-import logoImage from '../../assets/images/logo.png'
+import './Navbar.css';
+import logoImage from '../../assets/images/bibiBooking-logo.png';
 
-const Navbar = () => {
-  return (
+const Navbar = () => (
     <nav className="navbar">
-        <div className="nav-container">
-            <a href='/' className="logo">
-                <img src={logoImage} alt="logo" />
+        <div className="navbar__container">
+            <a href="/" className="navbar__logo-link" aria-label="Homepage">
+                <img src={logoImage} alt="BibiBooking Logo" className="navbar__logo" />
             </a>
 
-            <div className="nav-items">
-                <button className="nav-button">Register</button>
-                <button className="nav-button">Login</button>
+            <div className="navbar__actions">
+                <button className="navbar__button">Register</button>
+                <button className="navbar__button">Login</button>
             </div>
         </div>
     </nav>
-  )
-}
+);
 
-export default Navbar
+export default Navbar;

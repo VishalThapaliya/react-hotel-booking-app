@@ -1,5 +1,5 @@
-import React from 'react'
-import './Featured.css'
+import React from 'react';
+import './Featured.css';
 
 const featuredList = [
     {
@@ -37,25 +37,32 @@ const featuredList = [
         image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/0c/de/66/caption.jpg?w=1200&h=1600&s=1',
         title: 'Maldives',
         properties: '22,317'
-    }    
-]
+    }
+];
+
+const FeaturedItem = ({ image, title, properties }) => (
+    <figure className="featured-item">
+        <img src={image} alt={`Explore properties in ${title}`} className="featured-image" loading="lazy" />
+        <figcaption className="featured-title">
+            <h2>{title}</h2>
+            <h3>{properties} properties</h3>
+        </figcaption>
+    </figure>
+);
 
 const Featured = () => {
-  return (
-    <section className="featured">
-        { featuredList.map(item => (
-            <div className="featured-item" key={item.id}>
-                <img src={item.image} alt={item.title} className='featured-image'/>
+    return (
+        <section className="featured">
+            {featuredList.map(item => (
+                <FeaturedItem
+                    key={item.id}
+                    image={item.image}
+                    title={item.title}
+                    properties={item.properties}
+                />
+            ))}
+        </section>
+    );
+};
 
-                <div className="featured-title">
-                    <h2>{item.title}</h2>
-                    <h3>{item.properties}</h3>
-                </div>
-            </div>
-        ))}
-        
-    </section>
-  )
-}
-
-export default Featured
+export default Featured;
