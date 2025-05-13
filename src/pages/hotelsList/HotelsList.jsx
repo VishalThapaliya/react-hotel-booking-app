@@ -1,4 +1,3 @@
-import Navbar from '../../components/navbar/Navbar';
 import Header from '../../components/header/Header';
 import './HotelsList.css';
 import { useLocation, useNavigate } from 'react-router-dom';
