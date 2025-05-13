@@ -34,7 +34,7 @@ const Hotel = () => {
 
   // const hotel = location.state || fallbackHotel;
 
-  if(!hotel) {
+  if (!hotel) {
     return <p>Hotel details not found!</p>
   }
 

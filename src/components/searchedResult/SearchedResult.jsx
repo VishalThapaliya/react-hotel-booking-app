@@ -23,19 +23,19 @@ const SearchedResult = ({ id, name, location, distance, featureTitle, features, 
 
   return (
     <section className="search-result">
-      <img 
-        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/678617811.jpg?k=e91a5dfe5ed316ea72ea7a0a617132f554b66ee201bde096fee861add5bb3e51&o=&hp=1" 
-        alt="searched hotel image" 
-        className="search-result--image" 
+      <img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/678617811.jpg?k=e91a5dfe5ed316ea72ea7a0a617132f554b66ee201bde096fee861add5bb3e51&o=&hp=1"
+        alt="searched hotel image"
+        className="search-result--image"
       />
 
       <div className="search-result--description">
-        <h2 className="search-result--title">{ name }</h2>
+        <h2 className="search-result--title">{name}</h2>
         <span className="search-result--distance">{location}</span>
         <span className="search-result--distance">{distance}</span>
         <span className="search-result--taxi">Free airport taxi</span>
         <span className="search-result--subtitle">{featureTitle}</span>
-        <span className="search-result--features">{ features }</span>
+        <span className="search-result--features">{features}</span>
         <span className="search-result--cancel-option">Free cancellation</span>
         <span className="search-result--cancel-option-subtitle">You can cancel later, so lock in this great price today.</span>
       </div>
