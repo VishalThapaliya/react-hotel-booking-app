@@ -16,7 +16,7 @@ const Home = () => {
 
         <h2 className="home-title">Browse by property type</h2>
         <PropertyList />
-                
+
         <h2 className="home-title">Accommodations that guests love</h2>
         <HomeGuests />
 

@@ -9,15 +9,15 @@ import SearchedResult from '../../components/searchedResult/SearchedResult';
 
 // Dummy hotels data for listing
 const hotels = [
-  { 
-    id: '1', 
-    name: 'Lavie Maison Central AC Hot Tub', 
-    location: '123 Avenue de la liberation, 750013 Paris', 
-    distance: '500m from center', 
-    featureTitle: 'Apartment with 3 deluxe rooms', 
-    features: '4 Beds (3 beds + 1 sofa-bed) - 1 living room - 2 bathrooms', 
-    price: 175, 
-    ranking: 'Superb', 
+  {
+    id: '1',
+    name: 'Lavie Maison Central AC Hot Tub',
+    location: '123 Avenue de la liberation, 750013 Paris',
+    distance: '500m from center',
+    featureTitle: 'Apartment with 3 deluxe rooms',
+    features: '4 Beds (3 beds + 1 sofa-bed) - 1 living room - 2 bathrooms',
+    price: 175,
+    ranking: 'Superb',
     rating: 8.9,
     description: `Located in a central area of ​​Paris, Lavie Maison Central AC Hot Tub offers a hot tub. 
       Free WiFi is available throughout the property and the property is 800 meters from the Pompidou Center. 
@@ -26,54 +26,54 @@ const hotels = [
       Popular points of interest near the accommodation include Notre Dame Cathedral, Opéra Bastille, and Sainte-Chapelle. 
       The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.`
   },
-  { 
-    id: '2', 
-    name: 'Hotel Radisson', 
-    location: '4, Rue des Berger, 750011 Paris', 
-    distance: '50m from center', 
-    featureTitle: 'Hotel with 5 stars', 
-    features: '6 Beds (3 beds + 1 sofa-bed) - 1 living room - 3 bathrooms', 
-    price: 675, 
-    ranking: 'Excellent', 
-    rating: 9.0, 
+  {
+    id: '2',
+    name: 'Hotel Radisson',
+    location: '4, Rue des Berger, 750011 Paris',
+    distance: '50m from center',
+    featureTitle: 'Hotel with 5 stars',
+    features: '6 Beds (3 beds + 1 sofa-bed) - 1 living room - 3 bathrooms',
+    price: 675,
+    ranking: 'Excellent',
+    rating: 9.0,
     description: `Located in a central area of ​​Paris, Hotel Radisson offers luxury hotel service in the city of lights. 
       Free WiFi is available throughout the property and the property is 800 meters from the Pompidou Center. 
       This air-conditioned apartment consists of 6 bedrooms, a living room, a fully equipped kitchen with a fridge and a coffee machine, and 2 bathrooms with a bidet and a shower. 
       Towels and bed linen are available. Speaking English and French, staff at the 24-hour front desk can help you plan your stay. Lavie Maison Central AC Hot Tub offers a hot tub. 
       Popular points of interest near the accommodation include Notre Dame Cathedral, Opéra Bastille, and Sainte-Chapelle. 
       The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.` },
-  { 
-    id: '3', 
-    name: 'Hotel Plaza', 
-    location: '32 Rue Gustave Eiffel, 750009 Paris', 
-    distance: '250m from center', 
-    featureTitle: 'Hotel with royal services', 
-    features: '3 Beds (3 beds + 1 sofa-bed) - 1 living room - 2 bathrooms', 
-    price: 375, 
-    ranking: 'Superb', 
-    rating: 8.2, 
+  {
+    id: '3',
+    name: 'Hotel Plaza',
+    location: '32 Rue Gustave Eiffel, 750009 Paris',
+    distance: '250m from center',
+    featureTitle: 'Hotel with royal services',
+    features: '3 Beds (3 beds + 1 sofa-bed) - 1 living room - 2 bathrooms',
+    price: 375,
+    ranking: 'Superb',
+    rating: 8.2,
     description: `Located in a central area of ​​Paris, Hotel Plaza offers a magnificient view of the Eiffel tower from its premises. 
       Free WiFi is available throughout the property and the property is 10 meters from the Pompidou Center. 
       This air-conditioned apartment consists of 100 bedrooms, a living room, a fully equipped kitchen with a fridge and a coffee machine, and 2 bathrooms with a bidet and a shower. 
       Towels and bed linen are available. Speaking English and French, staff at the 24-hour front desk can help you plan your stay. Lavie Maison Central AC Hot Tub offers a hot tub. 
       Popular points of interest near the accommodation include Notre Dame Cathedral, Opéra Bastille, and Sainte-Chapelle. 
       The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.` },
-  { 
-    id: '4', 
-    name: 'Luxury Stay Inn', 
-    location: '5 Cours de Etoile, 750001 Paris', 
-    distance: '10m from center', 
-    featureTitle: 'Villa with honeymoon rooms for couples', 
-    features: '5 Beds (3 beds + 1 sofa-bed) - 1 living room - 3 bathrooms', 
-    price: 550, 
-    ranking: 'Excellent', 
-    rating: 9.5, 
+  {
+    id: '4',
+    name: 'Luxury Stay Inn',
+    location: '5 Cours de Etoile, 750001 Paris',
+    distance: '10m from center',
+    featureTitle: 'Villa with honeymoon rooms for couples',
+    features: '5 Beds (3 beds + 1 sofa-bed) - 1 living room - 3 bathrooms',
+    price: 550,
+    ranking: 'Excellent',
+    rating: 9.5,
     description: `Located in a central area of ​​Paris, Luxury Stay Inn offers a luxury villa for the couples and the honeymoon planners. 
       Free WiFi is available throughout the property and the property is 800 meters from the Pompidou Center. 
       This air-conditioned apartment consists of 3 bedrooms, a living room, a fully equipped kitchen with a fridge and a coffee machine, and 2 bathrooms with a bidet and a shower. 
       Towels and bed linen are available. Speaking English and French, staff at the 24-hour front desk can help you plan your stay. Lavie Maison Central AC Hot Tub offers a hot tub. 
       Popular points of interest near the accommodation include Notre Dame Cathedral, Opéra Bastille, and Sainte-Chapelle. 
-      The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.` 
+      The nearest airport is Paris - Orly Airport, 18 km from the accommodation, and the property offers a paid airport shuttle service.`
   },
 ];
 
@@ -162,7 +162,7 @@ const HotelsList = () => {
                 name={hotel.name}
                 location={hotel.location}
                 distance={hotel.distance}
-                featureTitle= {hotel.featureTitle}
+                featureTitle={hotel.featureTitle}
                 features={hotel.features}
                 price={hotel.price}
                 ranking={hotel.ranking}
